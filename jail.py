@@ -23,6 +23,7 @@ class Jugador:
     ficha = ""
     pos = 0
     carcel = False
+    carcelturnos = 3
     dice = Dados()
 
     def __init__(self,n,tablero):
@@ -38,15 +39,18 @@ class Jugador:
     def roll(self,doublecount):
         roll = self.dice.roll()
         if self.carcel:
+            self.carcelturnos -= 1
             if sys.argv[5] == "v":
                 print (self.ficha + " intenta salir de la carcel con  " + str(roll[0]))
-            if not roll[1]:
-                if sys.argv[5] == "v":
-                    print (self.ficha + " se queda en la carcel")
-                return
+            if self.carcelturnos > 0:
+                if not roll[1]:
+                    if sys.argv[5] == "v":
+                        print (self.ficha + " se queda en la carcel durante "+ str(self.carcelturnos)+" turnos más")
+                    return
             if sys.argv[5] == "v":
                 print (self.ficha + " sale de la carcel")
             self.carcel = False
+            self.carcelturnos = 3
         if doublecount == 2 and roll[1]:
             self.gotojail()
         else:

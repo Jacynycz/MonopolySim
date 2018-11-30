@@ -33,3 +33,26 @@ python norules.py 3 10 10000 0
 ```
 
 La simulación generará un mapa de calor con las casillas más visitadas y generará una imagen en la carpeta principal.
+
+
+#### jail.py
+
+Lanza una simulación básica del tablero teniendo en cuenta sólo las normas de ir a la carcel sin tener en cuenta las cartas. Además los jugadores intentarán salir de la cárcel sacando dobles sin pagar los 50€.
+
+La simulación dispone de una serie de argumentos para personalizar la ejecución. El comando de lanzamiento es:
+
+```
+python jail.py <numplayers> <numrolls> <numsims> <normalize> <verbose>
+```
+
+- numplayers: Define el número de jugdores para la simulación
+- numrolls:  Define el número de tiradas que hace cada jugador
+- numsims: Define el número de simulaciónes que ejecuta
+- normalize: Usa el valor 0 si cada simulación tiene menos de 100 tiradas. Si cada simulación tiene muchas tiradas utiliza el valor 1  
+- verbose: Escribe por pantalla los movimientos de cada jugador
+
+Ejemplo de simulación de 3 jugadores, 10 tiradas cada jugador, 10000 simulaciones sin normalizar, mostrando los movimientos
+
+```
+python jail.py 3 10 10000 0 v
+```
