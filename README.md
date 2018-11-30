@@ -1,10 +1,10 @@
 # MonopolySim
 
-Scripts de simulación del monopoly para generar estadísticas
+Scripts de simulación del monopoly para generar estadísticas.
 
-Para poder utilzar la simulación se requiere Python3, matplotlib y seaborn
+Para poder utilzar la simulación se requiere Python3, matplotlib y seaborn.
 
-Descarga el zip del repositorio o utiliza el comando
+Descarga el zip del repositorio o utiliza el comando:
 
 ```
 git clone https://github.com/Jacynycz/MonopolySim
