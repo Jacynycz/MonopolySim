@@ -77,6 +77,7 @@ class Casilla:
     """Class casilla"""
     nombre = ''
     hits = 0
+    perc = 0
     pos = []
     def trigger(self,player):
         self.hits += 1
@@ -278,9 +279,9 @@ for iterations in range(0,int(sys.argv[3])):
 
     for casilla in tablero:
         mask[casilla.pos[1],casilla.pos[0]]=False
-        porcx = float(casilla.hits) / float(rolls)
-        porc = float("{0:.4f}".format(porcx))
-        hm[casilla.pos[1],casilla.pos[0]]=hm[casilla.pos[1],casilla.pos[0]]*0.83+porcx*0.17
+        porcx = float(casilla.hits) / float(rolls) * 100
+        casilla.perc += porcx#float("{0:.4f}".format(porcx*0.83+casilla.perc*0.17))
+        hm[casilla.pos[1],casilla.pos[0]]=casilla.perc
         #print(casilla.nombre+ ": "+str(porc)+"% ("+str(casilla.hits)+")")
     if iterations%100 == 0:
         print("Simulando... "+str(float("{0:.1f}".format(nsims/int(sys.argv[3])*100)))+"%")
@@ -303,6 +304,9 @@ if int(sys.argv[4]) > 0:
     ax = sns.heatmap(hm, cmap="hot_r",mask = mask,center = minval,cbar = False)
 else:
     ax = sns.heatmap(hm, cmap="hot_r",mask = mask,cbar = False)
+
+for casilla in tablero:
+    print(casilla.nombre+": "+str(casilla.perc))
 
 ax.invert_yaxis()
 
